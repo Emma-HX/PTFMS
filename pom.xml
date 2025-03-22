@@ -4,7 +4,7 @@
   <artifactId>PTFMS-GPS</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
-  <name>PTFMSGPS</name>
+  <name>FINAL_PTFMS</name>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <jakartaee>10.0.0</jakartaee>
