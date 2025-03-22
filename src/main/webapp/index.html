@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PTFMS - Public Transit Fleet Management System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .header {
+            text-align: center;
+            padding: 20px 0;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #eee;
+        }
+        .header h1 {
+            color: #007bff;
+            margin: 0;
+            font-size: 28px;
+        }
+        .header p {
+            color: #666;
+            margin: 10px 0 0;
+            font-size: 16px;
+        }
+        .tabs {
+            display: flex;
+            border-bottom: 2px solid #ddd;
+            margin-bottom: 20px;
+        }
+        .tab {
+            padding: 15px 25px;
+            cursor: pointer;
+            border: none;
+            background: none;
+            font-size: 16px;
+            color: #666;
+            transition: all 0.3s ease;
+        }
+        .tab:hover {
+            color: #333;
+            background-color: #f0f0f0;
+        }
+        .tab.active {
+            color: #007bff;
+            border-bottom: 2px solid #007bff;
+            margin-bottom: -2px;
+        }
+        .content {
+            padding: 20px;
+        }
+        .welcome {
+            text-align: center;
+            padding: 50px 0;
+            font-size: 24px;
+            color: #333;
+        }
+        .welcome h1 {
+            margin-bottom: 20px;
+            color: #007bff;
+        }
+        .welcome p {
+            color: #666;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Public Transit Fleet Management System</h1>
+        </div>
+        <div class="tabs">
+            <button class="tab" onclick="showTab('login')">Log In</button>
+            <button class="tab" onclick="showTab('vehicle')">Vehicle Management</button>
+            <button class="tab" onclick="showTab('gps')">GPS Tracking</button>
+            <button class="tab" onclick="showTab('energy')">Energy Monitor</button>
+            <button class="tab" onclick="showTab('maintenance')">Maintenance</button>
+            <button class="tab" onclick="showTab('reporting')">Reporting</button>
+        </div>
+        <div class="content">
+            <div id="welcome" class="welcome">
+                <h1>Welcome to PTFMS</h1>        
+                <p>Please select “Log In” tab to begin.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showTab(tabName) {
+            // remove tabs' active 
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // 
+            event.target.classList.add('active');
+            
+            // 根据标签名称调用对应的servlet
+            switch(tabName) {
+                case 'login':
+                    window.location.href = 'login';
+                    break;
+                case 'vehicle':
+                    window.location.href = 'vehicleManagement';
+                    break;
+                case 'gps':
+                    event.preventDefault();
+                    window.open('gps?userId=1', 'GPS Tracking', 
+                        'width=800,height=600,menubar=no,toolbar=no,location=no,status=no');
+                    return false;
+                case 'energy':
+                    window.location.href = 'energyMonitor';
+                    break;
+                case 'maintenance':
+                    window.location.href = 'maintenance';
+                    break;
+                case 'reporting':
+                    window.location.href = 'reporting';
+                    break;
+            }
+        }
+    </script>
+</body>
+</html> 
